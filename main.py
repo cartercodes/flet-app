@@ -1,4 +1,5 @@
 from flet import *
+from custom_checkbox import CustomCheckBox
 
 def main (page: Page):
     BG = '#243e36'
@@ -24,7 +25,23 @@ def main (page: Page):
         )
     )
 
-    tasks=Column()
+    tasks=Column(
+        height=400,
+        scroll='auto',
+    )
+    for i in range(10):
+        tasks.controls.append(
+            Container(
+                height=50, 
+                width=400, 
+                bgcolor=BG, 
+                border_radius=25,
+                content=CustomCheckBox(
+                    color=PINK,
+                    label='Create Interesting Content!'
+                ),
+            )
+        )
 
     categories = ['Business', 'Family', 'Study', 'Health']
     for i, category in enumerate(categories):
@@ -106,6 +123,8 @@ def main (page: Page):
                 height=850,
                 bgcolor=BG,
                 border_radius=35,
+                animate=animation.Animation(600, Animation.curve.DECELERATE),
+                animate_scale=animation.Animation(400, curve='decelerate')
                 padding=padding.only(
                     top=50,
                     left=20,
