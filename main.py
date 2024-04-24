@@ -164,6 +164,7 @@ def main (page: Page):
                 Text(
                 value='CATEGORIES',
                 color='white',
+                size=12,
                 ),
                 Container(
                 padding=padding.only(top=10,bottom=20,),
@@ -212,17 +213,17 @@ def main (page: Page):
                 Container(height=25),
                 Row(controls=[
                 Icon(icons.FAVORITE_BORDER_SHARP,color='white60'),
-                Text('Templates',size=15,weight=FontWeight.W_300,color='white',font_family='poppins')
+                Text('Favorites',size=15,weight=FontWeight.W_300,color='white',font_family='poppins')
                 ]),
                 Container(height=5),
                 Row(controls=[
                 Icon(icons.CARD_TRAVEL,color='white60'),
-                Text('Templates',size=15,weight=FontWeight.W_300,color='white',font_family='poppins')
+                Text('Categories',size=15,weight=FontWeight.W_300,color='white',font_family='poppins')
                 ]),
                 Container(height=5),
                 Row(controls=[
                 Icon(icons.CALCULATE_OUTLINED,color='white60'),
-                Text('Templates',size=15,weight=FontWeight.W_300,color='white',font_family='poppins')
+                Text('Analytics',size=15,weight=FontWeight.W_300,color='white',font_family='poppins')
                 ]),
 
                 Image(src=f"/images/1.png",
