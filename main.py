@@ -1,5 +1,6 @@
 from flet import *
 from custom_checkbox import CustomCheckBox
+# from auth_page import auth_page
 
 def main (page: Page):
     BG = '#243e36'
@@ -11,6 +12,7 @@ def main (page: Page):
     # FWG = '#97b4ff'
     # FG = '#3450a1'
     # PINK = '#eb06ff'
+
 
     circle = Stack(
     controls=[
@@ -51,12 +53,24 @@ def main (page: Page):
       
     ]
   )
+    
+    #  def check_auth_status():
+    #     # If the user is not authenticated, go to the auth page
+    #     if not is_authenticated:  # You'll need to define how to check this
+    #         page.go('/auth')
+    #     else:
+    #         page.go('/')
+
+
+    # check_auth_status()  Call this instead of `page.go(page.route)`
 
     def route_change(route):
+        # if route != "/auth" and not is_authenticated:
+        #     page.go("/auth")
+        # else:
         page.views.clear()
-        page.views.append(
-            pages[page.route]
-        )
+        page.views.append(pages[page.route])
+        # page.update()cl
 
     def shrink(e): #shrinks page 2 to right side of screen
         page_2.controls[0].width = 120
@@ -70,7 +84,7 @@ def main (page: Page):
         )
         page_2.update()
 
-    def restore(e): #restores page
+    def restore(e): #restores page to original size
         page_2.controls[0].width = 400
         page_2.controls[0].border_radius = 35
         page_2.controls[0].scale = transform.Scale(
@@ -270,6 +284,8 @@ def main (page: Page):
             controls=[
                 page_1,
                 page_2,
+                # auth_page(page) to be directly accessible via stack 
+                # TODO: work on authentication page then authentication logic, this will build navigation 
             ]
         )
     )
@@ -287,7 +303,13 @@ def main (page: Page):
                         [
                             create_task_view
                         ],
-        )
+        ),
+        # '/auth' : View(
+        #           "/auth", 
+        #             [
+        #               auth_page(page)
+        #             ],
+        # ), to navigate via navigation
     }
 
     page.add(container)
